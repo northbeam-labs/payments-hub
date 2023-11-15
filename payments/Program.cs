@@ -1,0 +1,18 @@
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+builder.Services.AddSingleton<Api.Services.UserService>();
+builder.Services.AddSingleton<Api.Services.OrganizationService>();
+builder.Services.AddSingleton<Api.Services.ProjectService>();
+builder.Services.AddSingleton<Api.Services.TaskService>();
+builder.Services.AddSingleton<Api.Services.CommentService>();
+builder.Services.AddSingleton<Api.Services.TagService>();
+builder.Services.AddSingleton<Api.Services.InvoiceService>();
+builder.Services.AddSingleton<Api.Services.PaymentService>();
+builder.Services.AddSingleton<Api.Services.NotificationService>();
+builder.Services.AddSingleton<Api.Services.WebhookService>();
+builder.Services.AddSingleton<Api.Services.ApiKeyService>();
+builder.Services.AddSingleton<Api.Services.AuditLogService>();
+var app = builder.Build();
+app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
+app.MapControllers();
+app.Run();
