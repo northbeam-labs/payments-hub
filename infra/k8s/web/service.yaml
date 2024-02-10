@@ -5,3 +5,4 @@ metadata:
 spec:
   selector: { app: web }
   ports: [ { port: 80, targetPort: 8080 } ]
+# wip: retry-logic
